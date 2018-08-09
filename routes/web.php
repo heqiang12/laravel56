@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('index/{id}', 'TestController@index');
+Route::any('login', 'LoginController@login');
