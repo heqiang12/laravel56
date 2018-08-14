@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Route::get('test/{id}', 'TestController@index');
 Route::any('login', 'LoginController@login');
-Route::any('index','IndexController@index');
+Route::prefix('index')->group(function(){
+	Route::any('index','IndexController@index');
+	Route::any('admin','AdminController@index');
+});
+
