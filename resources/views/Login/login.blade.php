@@ -65,36 +65,23 @@
         </div>
     </div>
     
-
-
-    
-
-    
-        <div class="row-fluid">
+<div class="row-fluid">
     <div class="dialog">
         <div class="block">
-            <p class="block-heading">Sign In</p>
+            <p class="block-heading">登录</p>
             <div class="block-body" id="accountinput">
                 <form>
-                    <label>Username</label>
+                    <label>用户名</label>
                     <input type="text" class="span12" name='username' v-model='username'>
-                    <label>Password</label>
+                    <label>密码</label>
                     <input type="password" class="span12" name='password' v-model='password'>
-                    <a href="javascript:0" class="btn btn-primary pull-right" v-on:click="loginpost">Sign In</a>
-                    <label class="remember-me"><input type="checkbox"> Remember me</label>
+                    <a href="javascript:0" class="btn btn-primary pull-right" v-on:click="loginpost">登录</a>
+                    <label class="remember-me" v-on:click="rememberme()" ><input type="checkbox">记住</label>
                     <div class="clearfix"></div>
                 </form>
-
-                <!-- test -->
-            <div>
-                <h3>@{{ username }}</h3>
-                <h3>@{{ password }}</h3>
-            </div>
-            </div>
-            
+            </div>   
         </div>
-        <p class="pull-right" style=""><a href="#" target="blank">Theme by Portnine</a></p>
-        <p><a href="reset-password.html">Forgot your password?</a></p>
+        <p><a href="reset-password.html">忘记密码?</a></p>
     </div>
 </div>
 
@@ -127,7 +114,7 @@
                     })
                     .then(function(request){
                         if(request.data == "success"){
-                            alert("success");
+                            window.location.href = "index";
                         }else{
                             alert("shibai");
                         }
@@ -135,9 +122,40 @@
                     .catch(function(error){
                         alert("error");
                     })
-                }
+                },
+                setcookie: function (name, value, days) {
+
+                    var d = new Date;
+
+                    d.setTime(d.getTime() + 24*60*60*1000*days);
+
+                    window.document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+
+                },
+
+                getcookie: function (name) {
+
+                    var v = window.document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+
+                    return v ? v[2] : null;
+
+                },
+
+                deletecookie: function (name) {
+
+                    this.set(name, '', -1);
+
+                },
+
+                rememberme:function(){
+                    this.setcookie("username",this.username,7);
+                    this.setcookie("password",this.password,7);
+                },
+            },
+            mounted:function(){//填充用户名，密码
+                this.username = this.getcookie('username');
+                this.password = this.getcookie('password');
             }
-            
         })
     </script>
   </body>

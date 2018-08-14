@@ -17,6 +17,7 @@ return [
     */
 
     'driver' => env('SESSION_DRIVER', 'file'),
+    'connection' => 'session',//配置session驱动为redis
 
     /*
     |--------------------------------------------------------------------------
