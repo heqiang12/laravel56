@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Route::get('test/{id}', 'TestController@index');
 Route::any('login', 'LoginController@login');
-Route::prefix('index')->group(function(){
-	Route::any('index','IndexController@index');
+//首页
+Route::any('index','IndexController@index');
+//后台用户管理
+Route::prefix('admin','AdminController@index')->group(function(){
 	Route::any('admin','AdminController@index');
+	Route::any('save','AdminController@save');
 });
-

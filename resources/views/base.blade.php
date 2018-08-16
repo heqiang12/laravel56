@@ -14,6 +14,9 @@
 
     <script src="{{ URL::asset('test/lib/jquery-1.7.2.min.js') }}" type="text/javascript"></script>
 
+    <script src="{{ URL::asset('js/vue.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <!-- Demo page code -->
 
     <style type="text/css">
@@ -89,7 +92,7 @@
         <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>Dashboard</a>
         <ul id="dashboard-menu" class="nav nav-list collapse in">
             <li><a href="index.html">Home</a></li>
-            <li class="active" ><a href="admin">用户列表</a></li>
+            <li ><a href="admin">用户列表</a></li>
             <li ><a href="user.html">Sample Item</a></li>
             <li ><a href="media.html">Media</a></li>
             <li ><a href="calendar.html">Calendar</a></li>
@@ -127,6 +130,7 @@
     @yield('content')
   </div>
 
+  @section('js')
     <script src="{{ URL::asset('test/lib/bootstrap/js/bootstrap.js') }}"></script>
     <!-- <script src="{{ URL::asset('js/vue.js') }}"></script> -->
     <script type="text/javascript">
@@ -150,7 +154,7 @@
 
         
     </script>
-    
+    @show
   </body>
 </html>
 

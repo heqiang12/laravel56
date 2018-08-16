@@ -114,7 +114,7 @@
                     })
                     .then(function(request){
                         if(request.data == "success"){
-                            window.location.href = "index";
+                            window.location.href = "admin/admin";
                         }else{
                             alert("shibai");
                         }
